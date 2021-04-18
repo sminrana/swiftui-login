@@ -1,4 +1,4 @@
-# Complete Login App in SwiftUI
+# Complete App in SwiftUI with API integration.
 
 This project follows Swift MVVM design pattern. It also includes API example and industry standard project structure. 
 
