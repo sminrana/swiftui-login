@@ -22,20 +22,39 @@
 import SwiftUI
 import Combine
 
+
 class LoginViewModel: ObservableObject {
-    @Published var logged: Bool = false
-    @Published var user: User = User()
+    @Published var user: User = User(id: 0, name: "", email: "", token: "", isLogged: false)
     
+    private struct UserApiData: Codable {
+        var login: Bool
+        var data: User?
+        var message: String
+        var token: String?
+    }
+
     func login(_ params: String...) {
-        
         LoginApi().login(email: params[0], password: params[1], completion: { result, data in
             if result == .success {
-                self.logged = true
-                self.user = User(username: "Smin Rana")
+                guard let data = data else { return }
+                let decodedResponse = try! JSONDecoder().decode(UserApiData.self, from: data as! Data)
+                print(decodedResponse)
+                
+                DispatchQueue.main.sync {
+                    if decodedResponse.login {
+                        if let u = decodedResponse.data {
+                            self.user = User(id: u.id, name: u.name, email: u.email, token: decodedResponse.token!, isLogged: true, message: decodedResponse.message)
+                        }
+                    } else {
+                        self.user = User(id: 0, name: "", email: "", token: "", isLogged: false, message: decodedResponse.message)
+                    }
+                }
             }
             
             if result == .error {
-                self.logged = false
+                DispatchQueue.main.sync {
+                    self.user = User(id: 0, name: "", email: "", token: "", isLogged: false)
+                }
             }
         })
     }

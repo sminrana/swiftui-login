@@ -28,28 +28,21 @@ enum ResponseResult {
 
 final class LoginApi {
     func login(email: String, password: String, completion: @escaping (_ result: ResponseResult, _ data: Any?) -> ()) {
-        let login: Bool = true
-        completion(.success, login)
-        //completion(.error, login)
+        let postData = "email=\(email)&password=\(password)".data(using: .utf8)
         
-        /*let postData = "email=\(params[0])&password=\(params[1])".data(using: .utf8)
-        
-        guard let url = URL(string: "http://local.com/api/login") else { return }
+        guard let url = URL(string: AppSettings.HOST + "/api/login") else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.httpBody = postData
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            
             guard let data = data else { return }
-            completion(.success, data)
-         
-            /*let decodedResponse = try! JSONDecoder().decode(User.self, from: data)
-            
-            DispatchQueue.main.sync {
-                completion(.success, login)
-            }*/
-            
-        }.resume()*/
+            print(data)
+            if (error != nil) {
+                completion(.error, data)
+            } else {
+                completion(.success, data)
+            }
+        }.resume()
     }
 }

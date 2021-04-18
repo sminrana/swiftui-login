@@ -19,25 +19,8 @@
  *
  */
 
-import SwiftUI
+import Foundation
 
-@main
-struct SwiftUI_LoginApp: App {
-    let persistenceController = PersistenceController.shared
-
-    @StateObject var viewModel: LoginViewModel = LoginViewModel()
-    
-    var body: some Scene {
-        WindowGroup {
-            if viewModel.user.isLogged ?? false {
-                HomeView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .environmentObject(self.viewModel)
-            } else {
-                LoginView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .environmentObject(self.viewModel)
-            }
-        }
-    }
+final class AppSettings{
+    public static let HOST = "http://127.0.0.1:8000"
 }

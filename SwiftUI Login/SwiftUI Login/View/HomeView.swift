@@ -25,25 +25,36 @@ struct HomeView: View {
     
     @EnvironmentObject var viewModel: LoginViewModel
     
-    @State var fadeOut = false
+    @State var fadeOut: Bool = false
+    @State var showAlert: Bool = false
     
     var body: some View {
         NavigationView {
             MasterView()
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarTitle(Text("Welcome \(self.viewModel.user.username!)"))
+                .navigationBarTitle(Text("Welcome \(self.viewModel.user.name)"))
                 .navigationBarItems(trailing:
-                    Button(action: self.logout, label: {
+                        Button(action: { showAlert.toggle() }, label: {
                         Text("Log out")
                     })
                 )
         }
         .navigationViewStyle(DefaultNavigationViewStyle())
+        .actionSheet(isPresented: $showAlert, content: {
+            ActionSheet(title: Text("Do you want to log out?"),
+                        buttons: [.default(Text("Yes"), action: {
+                            logout()
+                        }),
+                        .destructive(Text("No"), action: {
+                            showAlert = false
+                        })]
+            )
+        })
         
     }
     
     func logout() {
-        self.viewModel.logged = false
+        self.viewModel.user = User(id: 0, name: "", email: "", token: "", isLogged: false)
     }
 }
 

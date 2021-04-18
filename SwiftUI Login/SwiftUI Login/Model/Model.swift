@@ -33,7 +33,12 @@ enum ViewType {
     case page2
 }
 
-struct User {
-    var username: String?
+struct User: Codable {
+    var id: Int
+    var name: String
+    var email: String
+    var token: String?
+    var isLogged: Bool?
+    var message: String?
 }
 

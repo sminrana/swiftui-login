@@ -23,15 +23,14 @@ import SwiftUI
 import CoreData
 
 struct LoginView: View {
-    
     @EnvironmentObject var viewModel: LoginViewModel
     
-    @State var username: String = "sminrana@gmail.com"
-    @State var password: String = "testing123"
+    // Save username and password in AppStorage
+    @AppStorage("username") var username: String = ""
+    @AppStorage("password") var password: String = ""
     
     @State var showAlert: Bool = false
     @State var alertMessage: String = ""
-    
     
     var body: some View {
         LinearGradient(gradient: Gradient(colors: [Color.gray, Color.secondary]),
@@ -60,11 +59,11 @@ struct LoginView: View {
                     })
             }
             .padding(50)
-            .onReceive(viewModel.$logged, perform:  { isLogged in
-                if isLogged {
-                    
-                } else {
-                   
+            .onReceive(viewModel.$user, perform:  { user in
+                // Show alert with the message receive from server if login fails
+                if !(user.isLogged ?? false) && user.message != nil {
+                    self.showAlert = true
+                    self.alertMessage = user.message ?? ""
                 }
             })
         )

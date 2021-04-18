@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		676E08E5262C8860002E3DD3 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676E08E4262C8860002E3DD3 /* AppSettings.swift */; };
 		67B1746F25D4F3F400AA0C5F /* SwiftUI_LoginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B1746E25D4F3F400AA0C5F /* SwiftUI_LoginApp.swift */; };
 		67B1747125D4F3F400AA0C5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B1747025D4F3F400AA0C5F /* ContentView.swift */; };
 		67B1747325D4F3F600AA0C5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67B1747225D4F3F600AA0C5F /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		676E08E4262C8860002E3DD3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		67B1746B25D4F3F400AA0C5F /* SwiftUI Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B1746E25D4F3F400AA0C5F /* SwiftUI_LoginApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_LoginApp.swift; sourceTree = "<group>"; };
 		67B1747025D4F3F400AA0C5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				67B174C725D4F4BD00AA0C5F /* AppExtension.swift */,
 				67B174C425D4F4BD00AA0C5F /* AppProtocol.swift */,
 				67B174C625D4F4BD00AA0C5F /* Validator.swift */,
+				676E08E4262C8860002E3DD3 /* AppSettings.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676E08E5262C8860002E3DD3 /* AppSettings.swift in Sources */,
 				67B174C025D4F4B500AA0C5F /* Model.swift in Sources */,
 				67B174B525D4F4A700AA0C5F /* LoginView.swift in Sources */,
 				67B174B625D4F4A700AA0C5F /* HomeView.swift in Sources */,
