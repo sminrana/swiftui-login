@@ -29,5 +29,42 @@ class SwiftUI_LoginTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testLoginApi() {
+        var user: User?
+        var isLogged = false
+        
+        let promise = expectation(description: "Loging API")
+        
+        LoginApi().login(email: "sminrana@gmail.com", password: "goaL5738", completion: { result, data in
+            if result == .success {
+                guard let data = data else { return }
+                let decodedResponse = try! JSONDecoder().decode(UserApiData.self, from: data as! Data)
+                print(decodedResponse)
+                
+                DispatchQueue.main.sync {
+                    if decodedResponse.login {
+                        isLogged = true
 
+                        if let u = decodedResponse.data {
+                            user = u
+                        }
+                    }
+                    
+                    promise.fulfill()
+                }
+            }
+            
+            if result == .error {
+                DispatchQueue.main.sync {
+                    promise.fulfill()
+                }
+            }
+        })
+        
+        wait(for: [promise], timeout: 5.0)
+        
+        XCTAssertNotNil(user)
+        XCTAssertTrue(isLogged)
+    }
 }

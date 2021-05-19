@@ -42,3 +42,9 @@ struct User: Codable {
     var message: String?
 }
 
+struct UserApiData: Codable {
+    var login: Bool
+    var data: User?
+    var message: String
+    var token: String?
+}

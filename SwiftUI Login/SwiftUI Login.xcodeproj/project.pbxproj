@@ -24,6 +24,8 @@
 		67B174C825D4F4BD00AA0C5F /* AppProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B174C425D4F4BD00AA0C5F /* AppProtocol.swift */; };
 		67B174CA25D4F4BD00AA0C5F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B174C625D4F4BD00AA0C5F /* Validator.swift */; };
 		67B174CB25D4F4BD00AA0C5F /* AppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B174C725D4F4BD00AA0C5F /* AppExtension.swift */; };
+		67EDBF6426557096006889E5 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B174AE25D4F49E00AA0C5F /* Api.swift */; };
+		67EDBF65265570D0006889E5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676E08E4262C8860002E3DD3 /* AppSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -352,7 +354,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EDBF6426557096006889E5 /* Api.swift in Sources */,
 				67B1748625D4F3F600AA0C5F /* SwiftUI_LoginTests.swift in Sources */,
+				67EDBF65265570D0006889E5 /* AppSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,13 +26,6 @@ import Combine
 class LoginViewModel: ObservableObject {
     @Published var user: User = User(id: 0, name: "", email: "", token: "", isLogged: false)
     
-    private struct UserApiData: Codable {
-        var login: Bool
-        var data: User?
-        var message: String
-        var token: String?
-    }
-
     func login(_ params: String...) {
         LoginApi().login(email: params[0], password: params[1], completion: { result, data in
             if result == .success {
